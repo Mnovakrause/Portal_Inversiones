@@ -1,0 +1,84 @@
+/* Estilos para la sidebar */
+
+body, html {
+    min-height: 100vh; /* Asegura que el cuerpo y HTML tengan al menos el 100% del alto de la ventana */
+    margin: 0; /* Remueve márgenes predeterminados que podrían añadir espacio no deseado */
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    background-color: #1a2035; /* Color de fondo de la sidebar */
+    overflow-y: auto; /* Permite la barra de desplazamiento si es necesario */
+    min-height: 100vh; /* Altura completa de la vista */
+}
+
+.sidebar .menu-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Ocultar todos los submenús por defecto */
+.nav ul {
+    display: none; /* Oculta los submenús por defecto */
+}
+
+/* Clase d-block para mostrar el submenú */
+.nav ul.d-block {
+    display: block; /* Se mostrará con display:block cuando se añada esta clase */
+}
+
+.nav>.nav-item a {
+    color: #b9babf;
+}
+
+.sidebar .nav .nav-section .text-section, .sidebar[data-background-color=white] .nav .nav-section .text-section {
+    padding: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-bottom: 12px;
+    margin-top: 20px;
+}
+
+.nav>.nav-item a:hover {
+    background-color: #495057; /* Un gris claro, puedes cambiar a tu preferencia */
+}
+
+.main-content {
+    padding: 20px; /* Espacio interno */
+    border-radius: 5px; /* Bordes redondeados */
+	flex: 1; /* Deja que el contenido principal ocupe el resto del espacio */
+
+}
+
+.main-content th, 
+.main-content td {
+    padding: 12px; /* Espacio interno en celdas */
+    text-align: left; /* Alinear texto a la izquierda */
+    border: 1px solid #dee2e6; /* Bordes de las celdas */
+}
+
+.main-content th {
+    background-color: #f2f2f2; /* Color de fondo para los encabezados */
+    font-weight: bold; /* Enfatiza el texto de los encabezados */
+}
+
+.main-content tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fondo alternante para filas */
+}
+
+.main-content tr:hover {
+    background-color: #e9ecef; /* Color de fondo al pasar el mouse */
+}
+
+.dropdown-menu {
+    padding: 0; /* Remueve el padding adicional */
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa; /* Color de fondo al pasar el mouse */
+}
+
