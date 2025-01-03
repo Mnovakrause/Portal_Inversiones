@@ -17,7 +17,7 @@ $data3 = grafico_porcentaje_sector();
             </div>
             <!-- Contenido Principal -->
             <div class="col-md-10 col-lg-10 main-content">
-				<div class="border rounded p-3 bg-light mb-4"><h5>Dashboard</h5></div>
+				<div class="border rounded p-3 bg-light mb-4"><h5>Resumen general</h5></div>
 				<div class="row">
 					<div class="col-md-6 col-lg-6">
 						<div id="container2" style="height: 400px;"></div>
