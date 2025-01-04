@@ -13,9 +13,13 @@ function actualizar_graficos_principales(data2, data3) {
 			data: data2.data, // Datos desde PHP
 			dataLabels: {
                 enabled: true, // Habilita las etiquetas de datos
-                format: '{point.name} ({point.y:.1f})%', // Formato de la etiqueta: porcentaje con un decimal
-                style: {
-                    fontWeight: 'bold',
+				formatter: function() {
+					return this.point.name + ': ' + 
+						   '(' + this.point.y.toFixed(1) + '%) </br>$' +
+						   formatNumber(this.point.absolute);
+				}, // Utiliza una función para formatear el contenido de la etiqueta      
+				style: {
+					fontWeight: 'bold',
                     color: 'black' // Color de texto puede ser ajustado
                 }
             }
@@ -33,8 +37,12 @@ function actualizar_graficos_principales(data2, data3) {
 			data: data3.data, // Datos desde PHP
 			dataLabels: {
                 enabled: true, // Habilita las etiquetas de datos
-                format: '{point.name} ({point.y:.1f})%', // Formato de la etiqueta: porcentaje con un decimal
-                style: {
+				formatter: function() {
+					return this.point.name + ': ' + 
+						   '(' + this.point.y.toFixed(1) + '%) </br>$' +
+						   formatNumber(this.point.absolute);
+				}, // Utiliza una función para formatear el contenido de la etiqueta   
+	            style: {
                     fontWeight: 'bold',
                     color: 'black' // Color de texto puede ser ajustado
                 }

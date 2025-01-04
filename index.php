@@ -1,7 +1,7 @@
 <?php
-include 'php/db_queries.php';
-$data2 = grafico_porcentaje_inversion_precioactual();
-$data3 = grafico_porcentaje_sector();
+	include 'php/db_queries.php';
+	$data2 = grafico_porcentaje_inversion_precioactual();
+	$data3 = grafico_porcentaje_sector();
 ?>
 
 <!DOCTYPE html>

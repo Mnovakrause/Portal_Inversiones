@@ -104,20 +104,25 @@ function grafico_porcentaje_inversion_precioactual() {
 # grafico de porcentajes del deashboard con respecto al precio actual 
 function grafico_porcentaje_sector() {
     $sql = "
-	select t.Sector, t.Cantidad, round(t.Cantidad*t.precio) as Total
+	select Sector, sum(Total) as Total, sum(Cantidad) as Cantidad
 	from(
 		select
-			s.Sector,
+			P.Accion,
 			sum(c.Cantidad) as Cantidad,
-			p.Precio  as precio
+			p.Precio  as precio,
+			sum(c.Cantidad) * p.Precio as Total
 		from
 			informacion_financiera.compras as c
 		inner join precios p 
 		on (c.Accion = p.Accion)
-		inner join sectores s 
-		on (c.Accion = s.Accion)
-		group by s.Sector	
-	) as t "; // Obtiene los datos
+		where p.fecha = (select max(fecha) from precios)
+		group by p.Accion 	
+	) as t
+	inner join (
+		select Accion, Sector from informacion_financiera.sectores 
+	) as y
+	on (y.Accion = t.Accion)
+	group by Sector "; // Obtiene los datos
 	$data = procesarData($sql);
    
 
