@@ -392,6 +392,33 @@ function informacion_dividendos_v2() {
 }
 
 
+function roe_accion() {
+	global $conn;
+    $sql = "select accion, roe from informacion_financiera.roe "; // Obtiene los datos
+	$stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	
+	$result = [];   
+    foreach ($data as $row) {
+       $result[$row['accion']] = $row['roe'];
+    }
+	return $result;
+}
 
+
+function sector_accion() {
+	global $conn;
+    $sql = "select accion, sector from informacion_financiera.sectores "; // Obtiene los datos
+	$stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	
+	$result = [];   
+    foreach ($data as $row) {
+       $result[$row['accion']] = $row['sector'];
+    }
+	return $result;
+}
 
 ?>

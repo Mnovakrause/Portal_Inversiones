@@ -2,6 +2,8 @@
 	include 'php/db_queries.php';
 	$data2 = grafico_porcentaje_inversion_precioactual();
 	$data3 = grafico_porcentaje_sector();
+	$roe_accion = roe_accion();
+	$sector_accion = sector_accion();
 ?>
 
 <!DOCTYPE html>
@@ -26,13 +28,16 @@
 						<div id="container3" style="height: 400px;"></div>
 					</div>					
 				</div>
+				<br>
 				<table id="detalle_tabla2">
-				<thead><tr><th>Accion</th><th>Cantidad</th><th>Total</th><th>%</th></tr></thead>
+				<thead><tr><th>Accion (ROE-2023)</th><th>Sector</th><th>Cantidad</th><th>Total</th><th>%</th></tr></thead>
 				<tbody>
 				<?php 
 					foreach ($data2['data'] as $row) {
+						$roe = $roe_accion[$row['name']];
 						echo "<tr>";
-						echo "<td><a href='https://www.bolsadesantiago.com/resumen_instrumento/".urlencode($row['name'])."'> " . $row['name'] . "</a></td>";	
+						echo "<td><a href='https://www.bolsadesantiago.com/resumen_instrumento/".urlencode($row['name'])."'> " . $row['name'] . "</a> (".$roe."%)</td>";	
+						echo "<td>" . $sector_accion[$row['name']] . "</td>";	
 						echo "<td>" . $row['absoluteQty'] . "</td>";	
 						echo "<td> $" . number_format($row['absolute'], 0, ',', '.') . "</td>";
 						echo "<td>" . round($row['y'],2) . "%</td>";	
