@@ -4,7 +4,7 @@
 	$data3 = grafico_porcentaje_sector();
 	$roe_accion = roe_accion();
 	$sector_accion = sector_accion();
-	dsad
+
 ?>
 
 <!DOCTYPE html>
