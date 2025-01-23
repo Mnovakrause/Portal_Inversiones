@@ -421,4 +421,16 @@ function sector_accion() {
 	return $result;
 }
 
+
+function informacion_compras(){
+	global $conn;
+    $sql = "select Fecha, Accion, Cantidad, Precio, Total from informacion_financiera.compras 
+	order by Fecha desc"; // Obtiene los datos
+	$stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $data;
+}
+
+
 ?>

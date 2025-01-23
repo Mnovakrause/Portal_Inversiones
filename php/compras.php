@@ -1,8 +1,7 @@
 <?php
 
-
-
-
+include 'db_queries.php';
+$consolidado_anual = informacion_compras();
 
 ?>
 
@@ -17,15 +16,20 @@
 					<?php include 'sidebar.php'; ?>
 				</div>		
 				<div class="col-md-10 col-lg-10 main-content">
+					<div class="border rounded p-3 bg-light mb-4"> <!-- Se añade un borde, padding y fondo -->
+						<h5>Historial de compras.</h5>
+					</div>			
 					<table id="myTable">
-						<thead><tr><th>Fecha</th><th>Accion</th><th>Precio de Compra</th></thead>
+						<thead><tr><th>Fecha</th><th>Accion</th><th>Cantidad</th><th>Precio</th><th>Total</th></thead>
 						<tbody>
 						<?php 
-							foreach ($data1 as $row) {
+							foreach ($consolidado_anual as $row) {
 								echo "<tr>";
-								echo "<td>" . $row['tec'] . "</td>";
-								echo "<td>" . $row['tipo_tec'] . "</td>";
-								echo "<td>" . $row['mo'] . "</td>";							
+								echo "<td>" . $row['Fecha'] . "</td>";
+								echo "<td>" . $row['Accion'] . "</td>";
+								echo "<td>" . $row['Cantidad'] . "</td>";		
+								echo "<td>$" . number_format($row['Precio'],0, ',', '.') . "</td>";	
+								echo "<td>$" . number_format($row['Total'],0, ',', '.') . "</td>";						
 								echo "</tr>";
 							}
 						?>
@@ -51,7 +55,8 @@
 							titleAttr: 'Exportar datos a un archivo Excel'
 						}
 					],
-					lengthMenu: [[-1, 10, 25, 50], ["Todo", 10, 25, 50]],
+					lengthMenu: [[25, 50, -1], [25, 50, "Todo"]],
+					order: [[0, 'desc']],
 				});
 			});
 		</script>

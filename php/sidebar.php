@@ -9,6 +9,9 @@
             <a class="nav-link active" href="/inversiones">Dashboard</a>
         </li>
 		<li class="nav-item">
+            <a class="nav-link active" href="/inversiones/php/Compras.php">Compras</a>
+        </li>
+		<li class="nav-item">
             <a class="nav-link active" href="/inversiones/php/dividendos.php">Dividendos</a>
         </li>
 		<li class="nav-item">
